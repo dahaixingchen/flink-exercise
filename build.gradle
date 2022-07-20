@@ -1,0 +1,33 @@
+plugins {
+    id 'java'
+    id 'scala'
+}
+
+group 'com.fei'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+ext{
+    scalaVersion='2.11.12'
+    flinkVersion = "1.13.5"
+    flinkScalaVersion = "2.11"
+    elasticsearchVersion = "7.9.3"
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+    implementation "org.scala-lang:scala-library:${scalaVersion}"
+    implementation "org.apache.flink:flink-streaming-scala_${flinkScalaVersion}:${flinkVersion}"
+    implementation "org.apache.flink:flink-clients_${flinkScalaVersion}:${flinkVersion}"
+
+    //es
+    implementation("org.elasticsearch.client:elasticsearch-rest-high-level-client:${elasticsearchVersion}")
+
+    // common
+    compile("com.alibaba:fastjson:1.2.56")
+}
